@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const ProfileContainer = styled.div`
-    width: 100%;
     display: flex;
     flex-direction: row;
     padding: 2em 2.5em;
     background-color: var(--background-base-color);
     border-radius: 16px;
+    margin-bottom: 3em;
 `;
 
 export const AvatarImg = styled.img`
