@@ -7,6 +7,12 @@ export const Container = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-    max-width: 1440px;
+    max-width: 900px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: -4%;
 `;

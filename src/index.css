@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --background-body-color: #1F1F1F;
+  --background-base-color: #292929;
   --background-header-color: #141414;
   --details-green-color: #3BCE5B;
 }

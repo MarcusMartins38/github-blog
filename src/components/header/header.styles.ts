@@ -8,6 +8,8 @@ export const HeaderContainer = styled.header`
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
+
+    padding-bottom: 30px;
 `;
 
 export const HeaderContent = styled.div`
