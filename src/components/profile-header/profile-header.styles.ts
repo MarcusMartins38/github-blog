@@ -11,6 +11,9 @@ export const ProfileContainer = styled.div`
 
 export const AvatarImg = styled.img`
     margin-right: 2em;
+    width: 9.25em;
+    height: 9.25em;
+    border-radius: 16px;
 `;
 
 export const ProfileContent = styled.div`

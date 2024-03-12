@@ -6,6 +6,8 @@ export const CardWrapper = styled.div`
     flex-direction: column;
     background-color: var(--background-base-color);
     border-radius: 10px;
+    max-height: 260px;
+    box-sizing: border-box;
 `;
 
 export const CardTitleContainer = styled.div`
@@ -16,7 +18,7 @@ export const CardTitleContainer = styled.div`
 
 export const CardTitle = styled.h2`
     font-size: 1.25em;
-    max-width: 280px;
+    max-width: 224px;
     margin-top: 0px;
 `;
 
@@ -24,8 +26,4 @@ export const CardDatePass = styled.span`
     font-size: 0.75em;
     color: var(--details-green-color);
     margin-top: 8px;
-`;
-
-export const CardDescription = styled.span`
-    color: #b8b8b8;
 `;

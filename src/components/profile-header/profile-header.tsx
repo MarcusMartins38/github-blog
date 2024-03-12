@@ -5,6 +5,7 @@ import {
     githubIconSvg,
     linkIconSvg,
 } from '../../assets';
+import { UserType } from '../../pages/home/home';
 import {
     AvatarImg,
     Description,
@@ -18,15 +19,19 @@ import {
     TitleName,
 } from './profile-header.styles';
 
-export const ProfileHeader = () => {
+interface ProfileHeaderType {
+    user: UserType;
+}
+
+export const ProfileHeader = ({ user }: ProfileHeaderType) => {
     return (
         <ProfileContainer>
-            <AvatarImg src={Avatar} />
+            <AvatarImg src={user.avatar_url} />
 
             <ProfileContent>
                 <TitleContainer>
-                    <TitleName>Marcus Martins</TitleName>
-                    <LinkGithub>
+                    <TitleName>{user.name}</TitleName>
+                    <LinkGithub href={user.html_url} target="_blank">
                         Github
                         <img
                             style={{ marginLeft: '4px', marginBottom: '4px' }}
@@ -42,7 +47,7 @@ export const ProfileHeader = () => {
                 <InfoContainer>
                     <InfoContent>
                         <img src={githubIconSvg} />
-                        <InfoText>marcusmartins38</InfoText>
+                        <InfoText>{user.login}</InfoText>
                     </InfoContent>
                     <InfoContent>
                         <img src={companyIconSvg} />
@@ -50,7 +55,7 @@ export const ProfileHeader = () => {
                     </InfoContent>
                     <InfoContent>
                         <img src={followIconSvg} />
-                        <InfoText>32 followers</InfoText>
+                        <InfoText>{user.followers} followers</InfoText>
                     </InfoContent>
                 </InfoContainer>
             </ProfileContent>

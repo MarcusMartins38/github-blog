@@ -1,23 +1,30 @@
+import { formatDistanceToNow } from 'date-fns';
+import { IssueType } from '../../pages/home/home';
 import {
     CardDatePass,
-    CardDescription,
     CardTitle,
     CardTitleContainer,
     CardWrapper,
 } from './card.styles';
+import { DescriptionMarkdown } from '../description-markdown/description-markdown';
+import { truncateString } from '../../utils/string';
 
-export const Card = () => {
+interface CardType {
+    issue: IssueType;
+}
+
+export const Card = ({ issue }: CardType) => {
     return (
         <CardWrapper>
             <CardTitleContainer>
-                <CardTitle>JavaScript data types and data structures</CardTitle>
-                <CardDatePass>Há 1 dia</CardDatePass>
+                <CardTitle>{truncateString(issue.title, 40)}</CardTitle>
+                <CardDatePass>
+                    {formatDistanceToNow(issue.created_at, { addSuffix: true })}
+                </CardDatePass>
             </CardTitleContainer>
-            <CardDescription>
-                Programming languages all have built-in data structures, but
-                these often differ from one language to another. This article
-                attempts to list the built-in data structures available in
-            </CardDescription>
+            <DescriptionMarkdown>
+                {truncateString(issue.body, 160)}
+            </DescriptionMarkdown>
         </CardWrapper>
     );
 };
