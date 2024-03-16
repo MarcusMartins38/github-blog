@@ -1,30 +1,21 @@
-# React + TypeScript + Vite
+# Repository Issue Tracker (React + TypeScript + Vite)
+Welcome to the Repository Issue Tracker! This project is a dynamic web application designed to fetch and display issues from its own GitHub repository. Built with React, this application serves as a testament to my journey in mastering React and applying best practices in real-world projects.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About The Project
+The Repository Issue Tracker was born out of a desire to practice with React, training my capabilities and to challenge myself in managing state, handling API requests, and rendering dynamic content. This application specifically aims to:
 
-Currently, two official plugins are available:
+- Fetch and list issues from this GitHub repository.
+- Provide a clean and user-friendly interface to browse through the issues.
+- Utilize modern React features such as Hooks and Context API for efficient state management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+Through the development of this application, I aimed to refine my understanding of React and enhance my skills
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
+*   **React**: For building the user interface and managing the application state.
+*   **Axios**: Utilized for making HTTP requests to the GitHub API.
+*   **Lodash**: For debounce functionality, optimizing search feature performance.
+*   **React Spinners**: To provide visual feedback during data loading phases.
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![image](https://github.com/MarcusMartins38/github-blog/assets/57776263/4f4bbb89-e321-4bd3-91c4-ff4f578f2079)
