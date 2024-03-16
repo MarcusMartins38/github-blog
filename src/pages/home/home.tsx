@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Card } from '../../components/card/card';
 import { Header } from '../../components/header/header';
 import { ProfileHeader } from '../../components/profile-header/profile-header';
@@ -6,6 +6,7 @@ import {
     CardContainer,
     Container,
     ContentContainer,
+    EmptyContainer,
     PublicContainer,
     PublicContent,
     PublicCount,
@@ -13,6 +14,7 @@ import {
     PublicTitle,
 } from './home.styles';
 import axios from 'axios';
+import { debounce } from 'lodash';
 
 export interface UserType {
     id: number;
@@ -56,6 +58,17 @@ export const Home = () => {
             });
     }, []);
 
+    const handleSearch = useCallback(
+        debounce((query: string) => {
+            const encodedQuery = encodeURIComponent(query);
+            const url = `https://api.github.com/search/issues?q=${encodedQuery}+repo:marcusmartins38/github-blog`;
+            axios.get(url).then((response) => {
+                setIssues(response.data.items);
+            });
+        }, 500),
+        []
+    );
+
     return (
         <Container>
             <Header />
@@ -67,13 +80,28 @@ export const Home = () => {
                         <PublicTitle>Publications</PublicTitle>
                         <PublicCount>6 publications</PublicCount>
                     </PublicContent>
-                    <PublicInput placeholder="Search content" />
+                    <PublicInput
+                        placeholder="Search content"
+                        value={search}
+                        onChange={(event) => {
+                            setSearch(event.target.value);
+                            handleSearch(event.target.value);
+                        }}
+                    />
 
-                    <CardContainer>
-                        {issues.map((issue) => (
-                            <Card key={issue.id} issue={issue} />
-                        ))}
-                    </CardContainer>
+                    {issues.length > 0 ? (
+                        <CardContainer>
+                            {issues.map((issue) => (
+                                <Card key={issue.id} issue={issue} />
+                            ))}
+                        </CardContainer>
+                    ) : (
+                        <EmptyContainer>
+                            <span>
+                                Sorry, there are any issue whit this title :(
+                            </span>
+                        </EmptyContainer>
+                    )}
                 </PublicContainer>
             </ContentContainer>
         </Container>

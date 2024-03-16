@@ -54,3 +54,15 @@ export const CardContainer = styled.div`
     gap: 2em;
     margin-top: 2em;
 `;
+
+export const EmptyContainer = styled.div`
+    width: 100%;
+    height: 136px;
+    margin-top: 2em;
+    background-color: var(--background-base-color);
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
