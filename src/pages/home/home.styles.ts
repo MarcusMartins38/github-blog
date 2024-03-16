@@ -21,6 +21,7 @@ export const PublicContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: relative;
 `;
 
 export const PublicContent = styled.div`
@@ -65,4 +66,18 @@ export const EmptyContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+
+export const OverlayStyle = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(31, 31, 31, 0.2);
+    z-index: 10;
+    border-radius: 16px;
 `;

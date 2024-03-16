@@ -7,6 +7,7 @@ import {
     Container,
     ContentContainer,
     EmptyContainer,
+    OverlayStyle,
     PublicContainer,
     PublicContent,
     PublicCount,
@@ -15,6 +16,7 @@ import {
 } from './home.styles';
 import axios from 'axios';
 import { debounce } from 'lodash';
+import { BeatLoader } from 'react-spinners';
 
 export interface UserType {
     id: number;
@@ -38,16 +40,18 @@ export const Home = () => {
     const [user, setUser] = useState<UserType>({} as UserType);
     const [search, setSearch] = useState('');
     const [issues, setIssues] = useState<IssueType[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         axios
             .get(
                 'https://api.github.com/search/issues?q=repo:marcusmartins38/github-blog'
             )
             .then((response) => {
-                console.log(response.data);
                 setIssues(response.data.items);
-            });
+            })
+            .finally(() => setIsLoading(false));
     }, []);
 
     useEffect(() => {
@@ -60,11 +64,15 @@ export const Home = () => {
 
     const handleSearch = useCallback(
         debounce((query: string) => {
+            setIsLoading(true);
             const encodedQuery = encodeURIComponent(query);
             const url = `https://api.github.com/search/issues?q=${encodedQuery}+repo:marcusmartins38/github-blog`;
-            axios.get(url).then((response) => {
-                setIssues(response.data.items);
-            });
+            axios
+                .get(url)
+                .then((response) => {
+                    setIssues(response.data.items);
+                })
+                .finally(() => setIsLoading(false));
         }, 500),
         []
     );
@@ -76,6 +84,11 @@ export const Home = () => {
                 <ProfileHeader user={user} />
 
                 <PublicContainer>
+                    {isLoading && (
+                        <OverlayStyle>
+                            <BeatLoader color="var(--details-green-color)" />{' '}
+                        </OverlayStyle>
+                    )}
                     <PublicContent>
                         <PublicTitle>Publications</PublicTitle>
                         <PublicCount>6 publications</PublicCount>
